@@ -57,6 +57,7 @@ run() % Turbo-builds, simulates, and reveals the GUI
 ## 📂 Project Structure
 - **/library**: The core engine and the `from.m` import magic.
 - **/examples**: Ready-to-run samples including the `main_turbo.m` benchmark.
+- **DOCS.md**: [Full API Reference & Technical Documentation](./DOCS.md).
 
 ---
 
