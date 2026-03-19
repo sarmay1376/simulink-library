@@ -1,8 +1,8 @@
 function h = addmux(varargin)
 % ADDMUX  Ultra-Easy Proxy for ses.block.common.mux
-    if nargin > 0
+    if nargout > 0
         h = ses.block.common.mux(varargin{:});
     else
-        h = [];
+        ses.block.common.mux(varargin{:});
     end
 end
