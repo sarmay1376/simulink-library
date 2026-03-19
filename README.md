@@ -6,6 +6,7 @@
 
 ## 🌟 Why SES?
 - **Pythonic Imports**: `from ses import setup sine gain mux scope` — intuitive, quote-free imports.
+- **Ultra-Easy Mode**: Support for **Command-Style syntax** (`connect sine.1 mux.1`)—no parentheses or quotes required for common blocks!
 - **Turbo Speed (8.75s Build)**: Built-in "Silent Build" technology achieves **10x-50x speedups**.
 - **Comprehensive Library**: Standard blocks across Continuous, Discrete, Logic, Math, and more.
 - **Modern Syntax**: Full support for `""` strings, `Port.Number` notation, and automatic block aliasing.
