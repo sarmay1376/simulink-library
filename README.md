@@ -46,7 +46,6 @@ addscope("SC1")
 % 4. Modern setparam (supports handles and multiple pairs)
 setparam("C1", 'P', 20, 'I', 10, 'D', 2)
 setparam("P1", 'num', [1], 'den', [1 5])
-```
 % 4. Logic-First Wiring
 connect("S1.1", "I1.1")
 connect("I1.1", "C1.1")
