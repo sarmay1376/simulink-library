@@ -30,19 +30,23 @@ Enable the engine and build your model in clean, Python-style code:
 
 ```matlab
 % 1. Import core utilities and your favorite blocks
-from ses import setup
-from ses import sine gain mux scope integrator pid logical 
+% Use 'add*' prefix to avoid conflicts with MATLAB's analytical functions
+from ses import setup addpulse addgain feedback addscope transferfcn addpid
 
 % 2. Setup the engine
 setup()
 start("Turbo_SES_Demo")
 
-% 3. Assemble and Configure (supports addsine or sine handles)
-addsine("S1")
-integrator("I1")
-pid("C1")
-scope("SC1")
+% 3. Assemble and Configure
+addpulse("S1")
+addpid("C1")
+transferfcn("P1")
+addscope("SC1")
 
+% 4. Modern setparam (supports handles and multiple pairs)
+setparam("C1", 'P', 20, 'I', 10, 'D', 2)
+setparam("P1", 'num', [1], 'den', [1 5])
+```
 % 4. Logic-First Wiring
 connect("S1.1", "I1.1")
 connect("I1.1", "C1.1")
@@ -62,13 +66,14 @@ run() % Turbo-builds, simulates, and reveals the GUI
 
 ---
 
-## 🏗️ Block Categories
-- **Continuous**: `integrator`, `derivative`, `transferfcn`, `pid`, `statespace`
-- **Discrete**: `delay`, `filter`
-- **Logic**: `logical` (AND/OR/XOR), `compare` (==, ~=, <, >)
-- **Math**: `abs`, `prod`, `sum`, `minmax`, `trig`, `sqrt`
-- **Sources**: `sine`, `step`, `pulse`, `ramp`, `const`, `random`, `clock`, `ground`
-- **Sinks**: `scope`, `display`, `terminator`, `toworkspace`
+## 🏗️ Block Categories & Naming Convention
+To prevent conflicts with MATLAB's control system toolbox (like `step()`, `pid()`, or `sum()`), SES blocks can be imported and called with an optional `add` prefix.
+
+- **Continuous**: `transferfcn`, `addpid`, `addintegrator`, `addderivative`
+- **Math**: `addsum`, `addgain`, `addprod`, `addabs`
+- **Sources**: `addstep`, `addsine`, `addpulse`, `addramp`, `addconst`
+- **Sinks**: `addscope`, `adddisplay`, `addtoworkspace`
+- **Others**: `addmux`, `adddemux`, `addlogical`, `addcompare`
 
 ---
 

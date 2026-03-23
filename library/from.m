@@ -32,7 +32,7 @@ function from(pkgName, ~, varargin)
         found = false;
         fullPath = ['ses.' name];
         if ~isempty(which(fullPath))
-            assignin('caller', name, str2func(fullPath));
+            assignin('caller', rawName, str2func(fullPath));
             found = true;
         elseif ~isempty(which(['ses.' rawName]))
             assignin('caller', rawName, str2func(['ses.' rawName]));
@@ -46,10 +46,8 @@ function from(pkgName, ~, varargin)
         for j = 1:length(subpkgs)
             term = ['ses.block.' subpkgs{j} '.' name];
             if ~isempty(which(term))
-                % ALWAYS assign both styles: 'sine' and 'addsine'
-                fHandle = str2func(term);
-                assignin('caller', name, fHandle);
-                assignin('caller', ['add' name], fHandle);
+                % ONLY assign the exact name requested by the user
+                assignin('caller', rawName, str2func(term));
                 found = true;
                 break;
             end
