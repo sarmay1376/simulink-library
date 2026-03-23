@@ -5,7 +5,7 @@
 **SES** is a high-performance, developer-friendly interface for building and simulating Simulink models programmatically in MATLAB. It brings the elegance of Python to the power of Simulink, significantly reducing the overhead of manual block creation and manual wiring.
 
 ## 🌟 Why SES?
-- **Pythonic Imports**: `from ses import setup sine gain mux scope` — intuitive, quote-free imports.
+- **Pythonic Imports**: `from ses import setup addsine addgain addmux addscope` — intuitive, quote-free imports.
 - **Ultra-Easy Mode**: Support for **Command-Style syntax** (`connect sine.1 mux.1`)—no parentheses or quotes required for common blocks!
 - **Turbo Speed (8.75s Build)**: Built-in "Silent Build" technology achieves **10x-50x speedups**.
 - **Comprehensive Library**: Standard blocks across Continuous, Discrete, Logic, Math, and more.
@@ -69,11 +69,11 @@ run() % Turbo-builds, simulates, and reveals the GUI
 ## 🏗️ Block Categories & Naming Convention
 To prevent conflicts with MATLAB's control system toolbox (like `step()`, `pid()`, or `sum()`), SES blocks can be imported and called with an optional `add` prefix.
 
-- **Continuous**: `transferfcn`, `addpid`, `addintegrator`, `addderivative`
-- **Math**: `addsum`, `addgain`, `addprod`, `addabs`
-- **Sources**: `addstep`, `addsine`, `addpulse`, `addramp`, `addconst`
-- **Sinks**: `addscope`, `adddisplay`, `addtoworkspace`
-- **Others**: `addmux`, `adddemux`, `addlogical`, `addcompare`
+- **Continuous**: `transferfcn`, `pid -> addpid`, `integrator -> addintegrator`, `derivative -> addderivative`
+- **Math**: `sum -> addsum`, `gain -> addgain`, `prod -> addprod`, `abs -> addabs`
+- **Sources**: `step -> addstep`, `sine -> addsine`, `pulse -> addpulse`, `ramp -> addramp`, `const -> addconst`
+- **Sinks**: `scope -> addscope`, `display -> adddisplay`, `toworkspace -> addtoworkspace`
+- **Others**: `mux -> addmux`, `demux -> adddemux`, `logical -> addlogical`, `compare -> addcompare`
 
 ---
 
